@@ -1,0 +1,19 @@
+**************************************************
+NWBInspector Report Summary
+
+Timestamp: 2026-11-05 05:49:42.103541-06:00
+Platform: Windows-11-10.0.26200-SP0
+NWBInspector version: 0.7.2
+
+Scanned 1 file(s).
+Found 1 issues across 1 file(s):
+       1 - BEST_PRACTICE_SUGGESTION
+**************************************************
+
+
+0  BEST_PRACTICE_SUGGESTION
+===========================
+
+0.0  data\nwb\l101210-001.nwb: check_experimenter_exists - 'NWBFile' object at location '/'
+       Message: Experimenter is missing.
+

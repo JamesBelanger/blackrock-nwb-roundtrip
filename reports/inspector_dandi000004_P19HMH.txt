@@ -1,0 +1,106 @@
+**************************************************
+NWBInspector Report Summary
+
+Timestamp: 2026-11-05 05:49:56.204702-06:00
+Platform: Windows-11-10.0.26200-SP0
+NWBInspector version: 0.7.2
+
+Scanned 1 file(s).
+Found 17 issues across 1 file(s):
+       1 - ERROR
+       6 - PYNWB_VALIDATION
+       2 - CRITICAL
+       2 - BEST_PRACTICE_VIOLATION
+       6 - BEST_PRACTICE_SUGGESTION
+**************************************************
+
+
+0  ERROR
+========
+
+0.0  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: During evaluation of 'check_units_table_duration' - <class 'TypeError'>: Indexing arrays must have integer dtypes - 'None' object with name 'None'
+       Message: Traceback (most recent call last):
+  File ".\.venv\Lib\site-packages\nwbinspector\_nwb_inspection.py", line 471, in run_checks
+    output = check_function(nwbfile_object)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\.venv\Lib\site-packages\nwbinspector\_registration.py", line 83, in auto_parse_some_output
+    output = check_function(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\.venv\Lib\site-packages\nwbinspector\checks\_ecephys.py", line 404, in check_units_table_duration
+    boundary_spike_times = spike_times_data[all_indices]
+                           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File ".\.venv\Lib\site-packages\h5py\_hl\dataset.py", line 945, in __getitem__
+    selection = sel.select(self.shape, args, dataset=self)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".\.venv\Lib\site-packages\h5py\_hl\selections.py", line 85, in select
+    return selector.make_selection(args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/_selector.pyx", line 297, in h5py._selector.Selector.make_selection
+  File "h5py/_selector.pyx", line 198, in h5py._selector.Selector.apply_args
+TypeError: Indexing arrays must have integer dtypes
+
+
+1  PYNWB_VALIDATION
+===================
+
+1.1  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: VectorIndex/description - 'None' object at location 'units/spike_times_index'
+       Message: argument missing
+
+1.2  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: VectorIndex - 'None' object at location 'units/spike_times_index'
+       Message: incorrect type - expected 'uint8', got 'int32'
+
+1.3  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: Units/spike_times_index - 'None' object at location 'units/spike_times_index'
+       Message: incorrect type - expected 'uint8', got 'int32'
+
+1.4  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: VectorIndex/description - 'None' object at location 'units/electrodes_index'
+       Message: argument missing
+
+1.5  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: VectorIndex - 'None' object at location 'units/electrodes_index'
+       Message: incorrect type - expected 'uint8', got 'int32'
+
+1.6  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: Units/electrodes_index - 'None' object at location 'units/electrodes_index'
+       Message: incorrect type - expected 'uint8', got 'int32'
+
+2  CRITICAL
+===========
+
+2.7  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_subject_age - 'Subject' object at location '/general/subject'
+       Message: Subject age, '34', does not follow ISO 8601 duration format, e.g. 'P2Y' for 2 years or 'P23W' for 23 weeks. You may also specify a range using a '/' separator, e.g., 'P1D/P3D' for an age range somewhere from 1 to 3 days. If you cannot specify the upper bound of the range, you may leave the right side blank, e.g., 'P90Y/' means 90 years old or older.
+
+2.8  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_subject_species_form - 'Subject' object at location '/general/subject'
+       Message: Subject species 'Human' should either be in Latin binomial form (e.g., 'Mus musculus' and 'Homo sapiens') or be a NCBI taxonomy link (e.g., 'http://purl.obolibrary.org/obo/NCBITaxon_280675').
+
+3  BEST_PRACTICE_VIOLATION
+==========================
+
+3.9  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_units_resolution_is_set - 'Units' object with name 'units'
+       Message: Units table has spike_times but resolution is not set. Resolution indicates the smallest possible difference between two spike times and should be a positive float equal to 1/sampling_rate of the recording system (e.g., Units(resolution=1/30000) for a 30 kHz system). This information is needed to assess the precision of spike timing data.
+
+3.10  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_data_orientation - 'OpticalSeries' object at location '/stimulus/presentation/StimulusPresentation'
+        Message: Data may be in the wrong orientation. Time should be in the first dimension, and is usually the longest dimension. Here, another dimension is longer. Current shape: (150, 400, 300, 3). Suggestion: Transpose your data so the first dimension is 400.
+
+4  BEST_PRACTICE_SUGGESTION
+===========================
+
+4.11  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_description - 'Device' object at location '/general/devices/Neuralynx-cheetah'
+        Message: Description is missing.
+
+4.12  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_description - 'OpticalSeries' object at location '/stimulus/presentation/StimulusPresentation'
+        Message: Description ('no description') is a placeholder.
+
+4.13  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_small_dataset_compression - 'OpticalSeries' object at location '/stimulus/presentation/StimulusPresentation'
+        Message: data is not compressed. Consider enabling compression when writing a dataset.
+
+4.14  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_experimenter_exists - 'NWBFile' object at location '/'
+        Message: Experimenter is missing.
+
+4.15  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_doi_publications - 'NWBFile' object at location '/'
+        Message: Metadata /general/related_publications 'Faraut et al. 2018, Scientific Data; Rutishauser et al. 2015, Nat Neurosci;' does not start with 'doi: ###' and is not an external 'doi' link.
+
+4.16  data\raw\dandi_000004\sub-P19HMH_ses-20080601_obj-uw5up9_ecephys+image.nwb: check_col_not_nan - 'ElectrodesTable' object with name 'electrodes'
+        Message: Column 'imp' has all NaN values. Consider removing it from the table.
+

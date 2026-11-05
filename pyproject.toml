@@ -1,0 +1,16 @@
+[project]
+name = "blackrock-nwb-roundtrip"
+version = "0.1.0"
+description = "Convert public Blackrock test recordings to NWB with NeuroConv, prove the conversion is exact, and inspect a published DANDI dataset."
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "neuroconv[blackrock]",
+    "pynwb",
+    "nwbinspector",
+    "dandi",
+    "scipy",
+    "matplotlib",
+]
+
+[tool.uv]
+package = false
