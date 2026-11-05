@@ -71,9 +71,9 @@ import numpy as np
 k = np.arange(109226); ((k / 30000.0) * 30000.0).astype(np.int64) != k   # 2,517 True
 ```
 
-**Which readers:** the Blackrock and MEArec sorting extractors (the ones with `neo_returns_frames = False`). Plexon, Plexon2, Neuralynx, NeuroExplorer and Spike2 return frames directly and are not affected. NeuroConv's `BlackrockSortingInterface` goes through this path, so NWB units tables written from .nev files by NeuroConv carry the error.
+**Which readers:** Blackrock only. MEArec shares the code path (`neo_returns_frames = False`), but its spike times are continuous, and MEArec places spikes in its recordings at `(st.times * fs).astype("int")`, so truncation is correct there. Rounding would move 376 of 747 spikes in `mearec_test_10s.h5` one frame late. (The filed issue first listed MEArec as affected; corrected 2026-11-05.) Plexon, Plexon2, Neuralynx, NeuroExplorer and Spike2 return frames directly. NeuroConv's `BlackrockSortingInterface` goes through this path, so NWB units tables written from .nev files by NeuroConv carry the error.
 
-**Fix:** `np.round((spike_times_seconds - t_start) * self._sampling_frequency).astype("int64")`.
+**Fix:** round only for Blackrock: a `round_spike_frames` class attribute (default False) that `BlackrockSortingExtractor` sets to True, applying `np.round` before `astype("int64")`. Rounding in the shared line, as first suggested, would break MEArec.
 
 ---
 
