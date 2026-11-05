@@ -6,8 +6,8 @@ Versions: neo 0.14.6, spikeinterface 0.105.4, neuroconv 0.10.2, Python 3.12, Win
 
 Searched each tracker on 2026-11-05 and found no existing report. Filed the same day:
 
-- Neo: https://github.com/NeuralEnsemble/python-neo/issues/1946
-- SpikeInterface spike rounding: https://github.com/SpikeInterface/spikeinterface/issues/4910
+- Neo: https://github.com/NeuralEnsemble/python-neo/issues/1946 (fix: https://github.com/NeuralEnsemble/python-neo/pull/1948)
+- SpikeInterface spike rounding: https://github.com/SpikeInterface/spikeinterface/issues/4910 (scope correction: https://github.com/SpikeInterface/spikeinterface/issues/4910#issuecomment-6665112066)
 - SpikeInterface NSx 2.1 gains: https://github.com/SpikeInterface/spikeinterface/issues/4911
 
 The filed text is the source of truth; the notes below are the working drafts.

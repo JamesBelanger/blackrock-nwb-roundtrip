@@ -10,5 +10,5 @@
 - Added `repro/`: three standalone scripts, one per upstream bug, run against the public test data.
 
 ## 2026-11-05 (later) — upstream fixes prepared
-- Fix branches with tests for python-neo#1946 and spikeinterface#4910 are ready locally (not pushed).
+- Fix branches with tests for python-neo#1946 and spikeinterface#4910. Neo PR opened: https://github.com/NeuralEnsemble/python-neo/pull/1948. The SpikeInterface branch waits on the maintainer (scope correction posted on #4910).
 - Correction: the spike-rounding bug is Blackrock-only. MEArec spike times are continuous and MEArec places spikes at `int(t*fs)`, so truncation is right there. Updated `UPSTREAM_ISSUES.md`.
