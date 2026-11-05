@@ -1,10 +1,16 @@
-# Upstream issue drafts
+# Upstream issues
 
 Found while converting the public Blackrock test recording `blackrock_2_1/l101210-001` and checking the NWB output value by value (`scripts/verify_roundtrip.py`). All three reproduce with public files from https://gin.g-node.org/NeuralEnsemble/ephy_testing_data.
 
 Versions: neo 0.14.6, spikeinterface 0.105.4, neuroconv 0.10.2, Python 3.12, Windows 11.
 
-Searched each tracker on 2026-11-05 and found no existing report. **Not filed yet.**
+Searched each tracker on 2026-11-05 and found no existing report. Filed the same day:
+
+- Neo: https://github.com/NeuralEnsemble/python-neo/issues/1946
+- SpikeInterface spike rounding: https://github.com/SpikeInterface/spikeinterface/issues/4910
+- SpikeInterface NSx 2.1 gains: https://github.com/SpikeInterface/spikeinterface/issues/4911
+
+The filed text is the source of truth; the notes below are the working drafts.
 
 ---
 
